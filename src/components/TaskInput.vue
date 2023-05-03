@@ -1,12 +1,13 @@
 <template>
   <div class="container">
     <div v-if="!isEditing">
-      <input type="text" placeholder="New task" v-model.trim="task" />
-      <span
-        class="pi pi-plus"
-        title="Add to list"
-        @click="addTask(task)"
-      ></span>
+      <input
+        type="text"
+        placeholder="New task"
+        v-model.trim="task"
+        @keyup.enter="addTask"
+      />
+      <span class="pi pi-plus" title="Add to list" @click="addTask"></span>
     </div>
     <div v-else>
       <input type="text" />
@@ -26,7 +27,16 @@ export default {
       task: "",
     };
   },
-  methods: {},
+  methods: {
+    addTask() {
+      if (this.task != "") {
+        this.$emit("addTask", this.task);
+      } else {
+        alert("The input field can not be empty");
+      }
+      this.task = "";
+    },
+  },
 };
 </script>
 
