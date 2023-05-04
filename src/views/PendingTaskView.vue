@@ -15,13 +15,13 @@ export default {
 
   data() {
     return {
-      tasks: JSON.parse(localStorage.getItem("tasks") || "[]"), // učitaj postojeće zadatke iz Local Storage
+      tasks: JSON.parse(localStorage.getItem("tasks") || "[]"),
     };
   },
   methods: {
     addTask(task) {
       this.tasks.push(task);
-      localStorage.setItem("tasks", JSON.stringify(this.tasks)); // ažuriraj Local Storage
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
   },
 };
